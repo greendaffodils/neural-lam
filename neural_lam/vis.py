@@ -87,9 +87,12 @@ def plot_prediction(
     Each has shape (N_grid,)
 
     """
+        # Line added  for the change .To avoid lazy evaluation
     # Get common scale for values
-    da_prediction = da_prediction.compute()
-    da_target = da_target.compute() 
+    
+    da_target = da_target.compute()
+    da_prediction = da_prediction.compute() #this is added
+
 
     if vrange is None:
         vmin = float(min(da_prediction.min(), da_target.min()))
